@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body onload="init()">
+    <canvas id="canv" width="800" height="800"></canvas>
+
+    <script>
+      function init() {
+        const canvas = document.getElementById("canv");
+        const ctx = canvas.getContext("2d");
+
+        ctx.beginPath();
+        ctx.moveTo(200, 300);
+
+        ctx.bezierCurveTo(0, 150, 200, 100, 200, 200);
+
+        ctx.moveTo(200, 300);
+        ctx.bezierCurveTo(400, 150, 200, 100, 200, 200);
+
+        ctx.closePath();
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillRect(199, 195, 2, 104);
+
+        ctx.beginPath();
+        ctx.fillStyle = "white";
+
+        ctx.arc(160, 200, 10, 0, 2 * Math.PI);
+        ctx.arc(240, 200, 10, 0, 2 * Math.PI);
+
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+
+        ctx.arc(160, 200, 5, 0, 2 * Math.PI);
+        ctx.arc(240, 200, 5, 0, 2 * Math.PI);
+
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(180, 240);
+        ctx.bezierCurveTo(200, 260, 200, 260, 220, 240);
+        ctx.fill()
+
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(180, 240);
+        ctx.fillStyle = "red";
+        ctx.bezierCurveTo(190, 240, 190, 250, 220, 240);
+        ctx.fill()
+        ctx.stroke();
+
+      
+        ctx.beginPath();
+  
+        ctx.rect(198, 244, 5, 5);
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+      }
+    </script>
+  </body>
+</html>
