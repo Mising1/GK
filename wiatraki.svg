@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <g transform="translate(400,400)">
+    <polygon fill="blue" points="0,0 -40,80 40,80" />
+
+    <g transform="rotate(-15)">
+      <rect x="-120" y="-5" width="240" height="10" fill="red" />
+
+      <g transform="translate(-120,0)">
+        <polygon fill="none" stroke="black" stroke-width="2"
+                   points="15,0 7.5,12.99 -7.5,12.99 -15,0 -7.5,-12.99 7.5,-12.99">
+          <animateTransform attributeName="transform" attributeType="XML"
+                            type="rotate"
+                            from="0 0 0" to="360 0 0"
+                            begin="0s" dur="2s" repeatCount="indefinite" />
+        </polygon>
+      </g>
+
+      <g transform="translate(120,0)">
+        <polygon fill="none" stroke="black" stroke-width="2"
+                  points="15,0 7.5,12.99 -7.5,12.99 -15,0 -7.5,-12.99 7.5,-12.99">
+          <animateTransform attributeName="transform" attributeType="XML"
+                            type="rotate"
+                            from="0 0 0" to="360 0 0"
+                            begin="0s" dur="2s" repeatCount="indefinite" />
+        </polygon>
+      </g>
+    </g>
+  </g>
+
+
+  <g transform="translate(250,200)">
+    <polygon fill="purple" points="0,0 -30,60 30,60" />
+
+    <g transform="rotate(15)">
+      <rect x="-90" y="-4" width="180" height="8" fill="red" />
+
+      <g transform="translate(-90,0)">
+        <polygon fill="none" stroke="black" stroke-width="2"
+                  points="15,0 7.5,12.99 -7.5,12.99 -15,0 -7.5,-12.99 7.5,-12.99">
+          <animateTransform attributeName="transform" attributeType="XML"
+                            type="rotate"
+                            from="0 0 0" to="360 0 0"
+                            begin="0s" dur="2s" repeatCount="indefinite" />
+        </polygon>
+      </g>
+
+      <g transform="translate(90,0)">
+        <polygon fill="none" stroke="black" stroke-width="2"
+                  points="15,0 7.5,12.99 -7.5,12.99 -15,0 -7.5,-12.99 7.5,-12.99">
+          <animateTransform attributeName="transform" attributeType="XML"
+                            type="rotate"
+                            from="0 0 0" to="360 0 0"
+                            begin="0s" dur="2s" repeatCount="indefinite" />
+        </polygon>
+      </g>
+    </g>
+  </g>
+
+
+  <g transform="translate(550,150)">
+    <polygon fill="green" points="0,0 -25,50 25,50" />
+
+    <g transform="rotate(-15)">
+      <rect x="-75" y="-3.5" width="150" height="7" fill="red" />
+
+      <g transform="translate(-75,0)">
+        <polygon fill="none" stroke="black" stroke-width="2"
+                  points="15,0 7.5,12.99 -7.5,12.99 -15,0 -7.5,-12.99 7.5,-12.99">
+          <animateTransform attributeName="transform" attributeType="XML"
+                            type="rotate"
+                            from="0 0 0" to="360 0 0"
+                            begin="0s" dur="2s" repeatCount="indefinite" />
+        </polygon>
+      </g>
+
+      <g transform="translate(75,0)">
+        <polygon fill="none" stroke="black" stroke-width="2"
+                  points="15,0 7.5,12.99 -7.5,12.99 -15,0 -7.5,-12.99 7.5,-12.99">
+          <animateTransform attributeName="transform" attributeType="XML"
+                            type="rotate"
+                            from="0 0 0" to="360 0 0"
+                            begin="0s" dur="2s" repeatCount="indefinite" />
+        </polygon>
+      </g>
+    </g>
+  </g>
+
+</svg>
