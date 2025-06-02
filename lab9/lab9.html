@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lab9</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<script>
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xdddddd);
+
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    scene.add(ambientLight);
+
+    const material = new THREE.MeshPhongMaterial({
+        color: 0x222222,
+        specular: 0x555555,
+        shininess: 30
+    });
+
+    const baseGeometry = new THREE.CylinderGeometry(1.2, 1.5, 0.4, 32);
+    const base = new THREE.Mesh(baseGeometry, material);
+    base.position.y = -1.8;
+
+    const bodyGeometry = new THREE.CylinderGeometry(1.0, 0.8, 3.0, 32);
+    const body = new THREE.Mesh(bodyGeometry, material);
+    body.position.y = base.position.y + (baseGeometry.parameters.height / 2) + (bodyGeometry.parameters.height / 2);
+
+    const topPlatformHeight = 0.3;
+    const topPlatformGeometry = new THREE.CylinderGeometry(1.2, 1.1, topPlatformHeight, 64);
+    const topPlatform = new THREE.Mesh(topPlatformGeometry, material);
+    topPlatform.position.y = body.position.y + (bodyGeometry.parameters.height / 2) + (topPlatformGeometry.parameters.height / 2);
+
+    const expandingTopGeometry = new THREE.CylinderGeometry(1.4, 1.2, 0.25, 32);
+    const expandingTop = new THREE.Mesh(expandingTopGeometry, material);
+    expandingTop.position.y = topPlatform.position.y + (topPlatformGeometry.parameters.height / 2) + (expandingTopGeometry.parameters.height / 2);
+
+    const topmostPlatformHeight = 0.2;
+    const topmostPlatformGeometry = new THREE.CylinderGeometry(1.4, 1.4, topmostPlatformHeight, 32);
+    const topmostPlatform = new THREE.Mesh(topmostPlatformGeometry, material);
+    topmostPlatform.position.y = expandingTop.position.y + (expandingTopGeometry.parameters.height / 2) + (topmostPlatformGeometry.parameters.height / 2);
+
+    const chessRook = new THREE.Group();
+    chessRook.add(base);
+    chessRook.add(body);
+    chessRook.add(topPlatform);
+    chessRook.add(expandingTop); 
+    chessRook.add(topmostPlatform);
+
+    scene.add(chessRook);
+
+    camera.position.z = 5;
+
+    let isDragging = false;
+    let previousMousePosition = {
+        x: 0,
+        y: 0
+    };
+
+    function onMouseMove(event) {
+        if (!isDragging) return;
+
+        const deltaX = event.clientX - previousMousePosition.x;
+        const deltaY = event.clientY - previousMousePosition.y;
+
+        chessRook.rotation.y += deltaX * 0.01;
+        chessRook.rotation.x += deltaY * 0.01;
+
+        previousMousePosition = {
+            x: event.clientX,
+            y: event.clientY
+        };
+    }
+
+    function onMouseDown(event) {
+        isDragging = true;
+        previousMousePosition = {
+            x: event.clientX,
+            y: event.clientY
+        };
+    }
+
+    function onMouseUp(event) {
+        isDragging = false;
+    }
+
+    renderer.domElement.addEventListener('mousemove', onMouseMove);
+    renderer.domElement.addEventListener('mousedown', onMouseDown);
+    renderer.domElement.addEventListener('mouseup', onMouseUp);
+
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    window.onload = function () {
+        animate();
+    }
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+</body>
+</html>
